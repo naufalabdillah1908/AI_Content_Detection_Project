@@ -34,6 +34,7 @@ class detector:
         lines = list(filter(lambda x: (x is not None) and (len(x) > 0), lines))
 
         ppl = self.getPPL(sentence)
+        print(f"Perplexity {ppl}")
         results["Perplexity"] = ppl
 
         offset = ""
@@ -54,9 +55,10 @@ class detector:
                 line = line[:-1]
             ppl = self.getPPL(line)
             Perplexity_per_line.append(ppl)
+            print(f"Perplexity per line {sum(Perplexity_per_line)/len(Perplexity_per_line)}")
         results["Perplexity per line"] = sum(
             Perplexity_per_line)/len(Perplexity_per_line)
-
+        print(f"Burstiness {max(Perplexity_per_line)}")
         results["Burstiness"] = max(Perplexity_per_line)
 
         out, label = self.getResults(results["Perplexity per line"])
