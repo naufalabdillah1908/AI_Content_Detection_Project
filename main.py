@@ -1,6 +1,6 @@
-from model import detector
+from model import Detector
 
-model = detector()
+model = Detector()
 
 print("Please enter your sentence: (Press Enter twice to start processing)")
 contents = []
